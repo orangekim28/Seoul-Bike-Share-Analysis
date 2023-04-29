@@ -44,13 +44,27 @@ plt.show()
 
 
 #%%
-sns.displot(df['BikeCount'],kde=True,color='g')
+# Create a 3x3 grid of subplots
+fig, axs = plt.subplots(nrows=3, ncols=3, figsize=(15, 15))
 
-plt.figure(figsize=(8,6))
-lis=['Hour','Temp',	'Humid','WindSpeed','Visibility','DewPTemp','SolarRad',	'Rainfall','Snowfall']
-for i in lis:
-  sns.displot(df[i],kde=True)
+# Flatten the axs array so we can iterate over it in a single loop
+axs = axs.flatten()
 
+# List of variables to plot
+lis = ['Hour', 'Temp', 'Humid', 'WindSpeed', 'Visibility', 'DewPTemp', 'SolarRad', 'Rainfall', 'Snowfall']
+
+# Iterate over the variables and plot each one on a subplot
+for i, var in enumerate(lis):
+    sns.histplot(df[var], kde=True, ax=axs[i])
+    axs[i].set_title(var)
+    axs[i].set_xlabel('')
+    axs[i].set_ylabel('')
+
+# Adjust the spacing between subplots
+plt.subplots_adjust(hspace=0.4, wspace=0.4)
+
+# Show the plot
+plt.show()
 
 # %%
 plt.figure(figsize=(12,8))
