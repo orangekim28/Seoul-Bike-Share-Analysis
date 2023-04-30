@@ -79,7 +79,7 @@ for i in discrete:
   sns.barplot(x=i,y='BikeCount',data=df,palette='magma')
 
 #%%
-df['Month'].value_counts()
+# df['Month'].value_counts()
 
 
 # %%
@@ -175,7 +175,7 @@ pipe = make_pipeline(StandardScaler(), XGBRegressor())
 
 # Cross-validation
 cv = cross_val_score(pipe, X_train, y_train, cv=10)
-print('Mean R2', np.mean(cv))
+print('Baseline XGBoost Mean R2', np.mean(cv))
 
 
 # %%%%%%%%%%%%%%%%%%%%%%%%%%% tuned XGBoost %%%%%%%%%%%%%%%%%%%%%%%%%
@@ -184,7 +184,7 @@ pipe = make_pipeline(StandardScaler(), XGBRegressor(n_estimators=70, max_depth=1
 
 # Cross-validation
 cv = cross_val_score(pipe, X_train, y_train, cv=10)
-print('Mean R2', np.mean(cv))
+print('Tuned XGBoost Mean R2', np.mean(cv))
 
 
 #%%
